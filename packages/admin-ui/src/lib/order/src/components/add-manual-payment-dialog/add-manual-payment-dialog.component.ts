@@ -6,10 +6,8 @@ import {
     Dialog,
     GetAddManualPaymentMethodListDocument,
     GetAddManualPaymentMethodListQuery,
-    GetPaymentMethodListQuery,
     ItemOf,
     ManualPaymentInput,
-    PAYMENT_METHOD_FRAGMENT,
 } from '@vendure/admin-ui/core';
 import { gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
@@ -46,7 +44,7 @@ export class AddManualPaymentDialogComponent implements OnInit, Dialog<Omit<Manu
     resolveWith: (result?: Omit<ManualPaymentInput, 'orderId'>) => void;
     form = new UntypedFormGroup({
         method: new UntypedFormControl('', Validators.required),
-        transactionId: new UntypedFormControl('', Validators.required),
+        transactionId: new UntypedFormControl(''),
     });
     paymentMethods$: Observable<Array<ItemOf<GetAddManualPaymentMethodListQuery, 'paymentMethods'>>>;
     constructor(private dataService: DataService) {}
